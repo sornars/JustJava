@@ -1,6 +1,8 @@
 <resources>
     <string name="app_name">Just Java</string>
 
-    <string name="hello_world">Hello world!</string>
+    <string name="quantity">Quantity</string>
+    <string name="quantity_init">0</string>
+    <string name="order">Order</string>
     <string name="action_settings">Settings</string>
 </resources>
