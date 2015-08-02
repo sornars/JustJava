@@ -2,9 +2,11 @@
     <string name="app_name">Just Java</string>
 
     <string name="quantity">Quantity</string>
-    <string name="quantity_init">0</string>
+    <string name="increment">+</string>
+    <string name="quantity_init">2</string>
+    <string name="decrement">-</string>
     <string name="price">Price</string>
-    <string name="price_init">$0</string>
+    <string name="price_init">$10</string>
     <string name="order">Order</string>
     <string name="action_settings">Settings</string>
 </resources>
