@@ -5,7 +5,7 @@
     <string name="increment">+</string>
     <string name="quantity_init">2</string>
     <string name="decrement">-</string>
-    <string name="price">Price</string>
+    <string name="price">Order Summary</string>
     <string name="price_init">$10</string>
     <string name="order">Order</string>
     <string name="action_settings">Settings</string>

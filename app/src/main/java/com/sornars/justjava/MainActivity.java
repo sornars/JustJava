@@ -24,25 +24,18 @@ public class MainActivity extends ActionBarActivity {
      * This method is called when the order button is clicked.
      */
     public void submitOrder(View view) {
-        String priceMessage = "Amount due: $" + (quantity * 5);
-        displayMessage(priceMessage);
+        int price = calculatePrice();
+        String message = createOrderSummary(price);
+        displayMessage(message);
     }
 
     /**
      * This method displays the given quantity value on the screen.
      */
-    private void displayQuantity(int number) {
+    private void displayQuantity(int quantity) {
         TextView quantityTextView = (TextView) findViewById(
                 R.id.quantity_text_view);
-        quantityTextView.setText("" + number);
-    }
-
-    /**
-     * This method displays the given price on the screen.
-     */
-    private void displayPrice(int number) {
-        TextView priceTextView = (TextView) findViewById(R.id.price_text_view);
-        priceTextView.setText(NumberFormat.getCurrencyInstance().format(number));
+        quantityTextView.setText("" + quantity);
     }
 
     /**
@@ -65,7 +58,31 @@ public class MainActivity extends ActionBarActivity {
      * This method displays the given text on the screen.
      */
     private void displayMessage(String message) {
-        TextView priceTextView = (TextView) findViewById(R.id.price_text_view);
-        priceTextView.setText(message);
+        TextView orderSummaryTextView = (TextView) findViewById(R.id.order_summary_text_view);
+        orderSummaryTextView.setText(message);
+    }
+
+    /**
+     * Calculates the price of the order.
+     *
+     * @return total price
+     */
+    private int calculatePrice() {
+        int price = quantity * 5;
+        return price;
+    }
+
+    /**
+     * Creates a summary of the order
+     *
+     * @param price
+     * @return
+     */
+    private String createOrderSummary(int price) {
+        String orderSummaryMessage = "Name: Kaptain Kunal";
+        orderSummaryMessage += "\nQuantity: " + quantity;
+        orderSummaryMessage += "\nTotal $: " + price;
+        orderSummaryMessage += "\nThank you!";
+        return orderSummaryMessage;
     }
 }
