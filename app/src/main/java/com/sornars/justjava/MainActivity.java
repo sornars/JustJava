@@ -24,7 +24,6 @@ public class MainActivity extends ActionBarActivity {
      * This method is called when the order button is clicked.
      */
     public void submitOrder(View view) {
-        display(quantity);
         displayPrice(quantity * 5);
     }
 
@@ -51,7 +50,6 @@ public class MainActivity extends ActionBarActivity {
     public void increment(View view) {
         quantity++;
         display(quantity);
-        displayPrice(quantity * 5);
     }
 
     /**
@@ -60,7 +58,5 @@ public class MainActivity extends ActionBarActivity {
     public void decrement(View view) {
         quantity--;
         display(quantity);
-        displayPrice(quantity * 5);
-
     }
 }
