@@ -1,11 +1,13 @@
 package com.sornars.justjava;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.text.NumberFormat;
 
@@ -50,7 +52,16 @@ public class MainActivity extends ActionBarActivity {
      * This method is called when the increment button is clicked.
      */
     public void increment(View view) {
-        quantity++;
+        if (quantity < 100) {
+            quantity++;
+        } else {
+            Context context = getApplicationContext();
+            int duration = Toast.LENGTH_SHORT;
+
+            Toast toast = Toast.makeText(context, "Cannot order more than 100 coffees!", duration);
+            toast.show();
+        }
+
         displayQuantity(quantity);
     }
 
@@ -58,7 +69,16 @@ public class MainActivity extends ActionBarActivity {
      * This method is called when the decrement button is clicked.
      */
     public void decrement(View view) {
-        quantity--;
+        if (quantity > 1) {
+            quantity--;
+        } else {
+            Context context = getApplicationContext();
+            int duration = Toast.LENGTH_SHORT;
+
+            Toast toast = Toast.makeText(context, "Cannot order less than 1 coffee!", duration);
+            toast.show();
+        }
+
         displayQuantity(quantity);
     }
 
