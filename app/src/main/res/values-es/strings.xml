@@ -1,0 +1,13 @@
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="topping1">Crema Batida</string>
+    <string name="quantity">Cantidad</string>
+    <string name="price">Resumen del Pedido</string>
+    <string name="order">Pedido</string>
+    <string name="action_settings">Ajustes</string>
+    <string name="too_many_coffees">No se puede pedir más de 100 cafés!</string>
+    <string name="too_few_coffees">No se puede pedir menos de 1 café!"</string>
+    <string name="name">Nombre</string>
+    <string name="thanks">Gracias!</string>
+    <string name="empty_order">No se puede ordenar 0 cafés !</string>
+    <string name="email_subject">JustJava Orden de <xliff:g example="Stan" id="name">%s</xliff:g></string>
+</resources>
