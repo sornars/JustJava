@@ -1,6 +1,8 @@
 package com.sornars.justjava;
 
 import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.View;
@@ -8,8 +10,6 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import java.text.NumberFormat;
 
 /**
  * This app displays an order form to order coffee.
@@ -36,7 +36,12 @@ public class MainActivity extends ActionBarActivity {
         String name = nameInput.getText().toString();
         int price = calculatePrice(topping1, topping2);
         String message = createOrderSummary(name, price, topping1, topping2);
-        displayMessage(message);
+        Intent emailIntent = new Intent(Intent.ACTION_SENDTO, Uri.parse("mailto:"));
+        emailIntent.putExtra(Intent.EXTRA_SUBJECT, "JustJava Order for " + name);
+        emailIntent.putExtra(Intent.EXTRA_TEXT, message);
+        if (emailIntent.resolveActivity(getPackageManager()) != null) {
+            startActivity(emailIntent);
+        }
     }
 
     /**
@@ -80,14 +85,6 @@ public class MainActivity extends ActionBarActivity {
         }
 
         displayQuantity(quantity);
-    }
-
-    /**
-     * This method displays the given text on the screen.
-     */
-    private void displayMessage(String message) {
-        TextView orderSummaryTextView = (TextView) findViewById(R.id.order_summary_text_view);
-        orderSummaryTextView.setText(message);
     }
 
     /**
