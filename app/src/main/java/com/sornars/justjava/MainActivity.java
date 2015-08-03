@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.View;
 import android.widget.CheckBox;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import java.text.NumberFormat;
@@ -25,10 +26,14 @@ public class MainActivity extends ActionBarActivity {
      * This method is called when the order button is clicked.
      */
     public void submitOrder(View view) {
-        CheckBox topping1CheckBox = (CheckBox) findViewById(R.id.topping1_check_box);
+        CheckBox topping1CheckBox = (CheckBox) findViewById(R.id.topping1_checkbox);
+        CheckBox topping2CheckBox = (CheckBox) findViewById(R.id.topping2_checkbox);
+        EditText nameInput = (EditText) findViewById(R.id.name_input);
         Boolean topping1 = topping1CheckBox.isChecked();
-        int price = calculatePrice();
-        String message = createOrderSummary(price, topping1);
+        Boolean topping2 = topping2CheckBox.isChecked();
+        String name = nameInput.getText().toString();
+        int price = calculatePrice(topping1, topping2);
+        String message = createOrderSummary(name, price, topping1, topping2);
         displayMessage(message);
     }
 
@@ -68,21 +73,36 @@ public class MainActivity extends ActionBarActivity {
     /**
      * Calculates the price of the order.
      *
+     * @param topping1 has whipped cream
+     * @param topping2 has chocolate
      * @return total price
      */
-    private int calculatePrice() {
-        return quantity * 5;
+    private int calculatePrice(boolean topping1, boolean topping2) {
+        int price = 5;
+        if (topping1 == true) {
+            price += 1;
+        }
+
+        if (topping2 == true) {
+            price += 2;
+        }
+
+        return price * quantity;
     }
 
     /**
-     * Creates a summary of the order
+     * Create summary of the order.
      *
-     * @param price total price
-     * @return String order summary
+     * @param name     of the person making the order
+     * @param price    of the order
+     * @param topping1 is whether or not the user wants whipped cream topping
+     * @param topping2 is whether or not the user wants chocolate topping
+     * @return text summary
      */
-    private String createOrderSummary(int price, boolean topping1) {
-        String orderSummaryMessage = "Name: Kaptain Kunal";
+    private String createOrderSummary(String name, int price, boolean topping1, boolean topping2) {
+        String orderSummaryMessage = "Name: " + name;
         orderSummaryMessage += "\nHas Whipped Cream: " + topping1;
+        orderSummaryMessage += "\nHas Chocolate: " + topping2;
         orderSummaryMessage += "\nQuantity: " + quantity;
         orderSummaryMessage += "\nTotal $: " + price;
         orderSummaryMessage += "\nThank you!";
